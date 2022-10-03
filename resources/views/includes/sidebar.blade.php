@@ -53,5 +53,6 @@
     <div class="sb-sidenav-footer">
         <div class="small">{{ Str::upper(Auth::user()->name) }}</div>
         {{ Str::upper(Auth::user()->status) }}
+        <div class="small">Test</div>
     </div>
 </nav>
