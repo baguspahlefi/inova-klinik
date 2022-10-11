@@ -31,23 +31,17 @@ Tindakan Dan Obat
                                         <tbody>
                                             @forelse ($items as $item)
                                             <tr>
-                                                <th> {{$item->tdo_id}} </th>
+                                                <th> {{$item->id}} </th>
                                                 <th> {{$item->NIK}} </th>
                                                 <th> {{$item->nama_pasien}} </th>
                                                 <td> {{$item->user_tabel->name}} </td>
                                                 <td> {{$item->masterwilayah_tabel->nama_wilayah}} </td>
                                                 <td> {{$item->status_tindakan}} </td>
                                                 <td>
-                                                    <a href=" {{route('menu_tindakan_dan_obat.edit',$item->tdo_id)}} " class="btn btn-warning">
+                                                    <a href=" {{route('menu_tindakan_dan_obat.edit',$item->id)}} " class="btn btn-warning">
                                                         <i class="fa fa-pencil-alt"></i>
                                                     </a>
-                                                    <form action=" {{route('menu_tindakan_dan_obat.destroy',$item->tdo_id)}} " method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger" type="submit">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                    </form>
+                                                   
                                                 </td>
                 
                                             </tr>

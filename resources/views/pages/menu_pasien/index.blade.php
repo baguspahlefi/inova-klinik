@@ -27,18 +27,30 @@ Menu Pasien
                                                 <th>NIK</th>
                                                 <th>Pegawai</th>
                                                 <th>Wilayah</th>
+                                                <th>Aksi</th>
                                           
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @forelse ($item as $item)
                                                 <tr>
-                                                    <td> {{$item->pasien_id}} </td>
+                                                    <td> {{$item->id}} </td>
                                                     <td> {{$item->nama_pasien}} </td>
                                                     <td> {{$item->NIK}} </td>
                                                     <td> {{$item->user_tabel->name}} </td>
                                                     <td> {{$item->masterwilayah_tabel->nama_wilayah}} </td>
-                                                    
+                                                    <td>
+                                                        <a href=" {{route('menu_pasien.edit',$item->id)}} " class="btn btn-primary">
+                                                            <i class="fa fa-pencil-alt"></i>
+                                                        </a>
+                                                        <form action=" {{route('menu_pasien.destroy',$item->id)}} " method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="btn btn-danger" type="submit">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 

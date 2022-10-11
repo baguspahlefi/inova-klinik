@@ -25,4 +25,8 @@ class MasterTindakan extends Model
 	{
 		return $this->hasMany(Tagihan::class, 'tindakan_id');
 	}
+
+    public function pasien_tabel(){
+        return $this->hasMany(Pasien::class, 'tindakan_id');
+    }
 }

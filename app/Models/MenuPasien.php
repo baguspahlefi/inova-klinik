@@ -25,6 +25,10 @@ class MenuPasien extends Model
 	{
 		return $this->belongsTo(User::class, 'pegawai_id');
 	}
+
+    
+
+    
     
     
 }

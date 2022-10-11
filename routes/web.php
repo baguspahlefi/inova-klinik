@@ -105,13 +105,13 @@ Route::get('/menupasien/tambah_pasien', [App\Http\Controllers\MenuPasienControll
 Route::post('/menupasien/tambah_pasien/store', [App\Http\Controllers\MenuPasienController::class, 'store'])
 ->middleware(['auth'])
 ->name('menu_pasien.store');
-Route::get('/menupasien/edit_pasien/{pasien_id}', [App\Http\Controllers\MenuPasienController::class, 'edit'])
+Route::get('/menupasien/edit_pasien/{id}', [App\Http\Controllers\MenuPasienController::class, 'edit'])
 ->middleware(['auth'])
 ->name('menu_pasien.edit');
-Route::get('/menupasien/edit_pasien/update/{pasien_id}', [App\Http\Controllers\MenuPasienController::class, 'update'])
+Route::put('/menupasien/edit_pasien/update/{id}', [App\Http\Controllers\MenuPasienController::class, 'update'])
 ->middleware(['auth'])
 ->name('menu_pasien.update');
-Route::delete('/menupasien/hapus_pasien/{pasien_id}', [App\Http\Controllers\MenuPasienController::class, 'destroy'])
+Route::delete('/menupasien/hapus_pasien/{id}', [App\Http\Controllers\MenuPasienController::class, 'destroy'])
 ->middleware(['auth'])
 ->name('menu_pasien.destroy');
 
@@ -119,16 +119,27 @@ Route::delete('/menupasien/hapus_pasien/{pasien_id}', [App\Http\Controllers\Menu
 Route::get('/tindakan_dan_obat', [App\Http\Controllers\TindakanDanObatController::class, 'index'])
 ->middleware(['auth'])
 ->name('menu_tindakan_dan_obat');
-Route::get('/tindakan_dan_obat/edit/{tdo_id}', [App\Http\Controllers\TindakanDanObatController::class, 'edit'])
+Route::get('/tindakan_dan_obat/edit/{id}', [App\Http\Controllers\TindakanDanObatController::class, 'edit'])
 ->middleware(['auth'])
 ->name('menu_tindakan_dan_obat.edit');
-Route::put('/tindakan_dan_obat/update/{tdo_id}', [App\Http\Controllers\TindakanDanObatController::class, 'update'])
+Route::put('/tindakan_dan_obat/update/{id}', [App\Http\Controllers\TindakanDanObatController::class, 'update'])
 ->middleware(['auth'])
 ->name('menu_tindakan_dan_obat.update');
-Route::delete('/tindakan_dan_obat/hapus/{tdo_id}', [App\Http\Controllers\TindakanDanObatController::class, 'destroy'])
+Route::put('/tindakan_dan_obat/pembayaran/{id}', [App\Http\Controllers\TindakanDanObatController::class, 'pembayaran'])
+->middleware(['auth'])
+->name('menu_tindakan_dan_obat.pembayaran');
+Route::delete('/tindakan_dan_obat/hapus/{id}', [App\Http\Controllers\TindakanDanObatController::class, 'destroy'])
 ->middleware(['auth'])
 ->name('menu_tindakan_dan_obat.destroy');
 
 Route::get('/tagihan', [App\Http\Controllers\TagihanController::class, 'index'])
 ->middleware(['auth'])
 ->name('tagihan');
+Route::get('/tagihan/show/{id}', [App\Http\Controllers\TagihanController::class, 'show'])
+->middleware(['auth'])
+->name('tagihan.show');
+Route::put('/tagihan/update/{id}', [App\Http\Controllers\TagihanController::class, 'update'])
+->middleware(['auth'])
+->name('tagihan.update');
+
+

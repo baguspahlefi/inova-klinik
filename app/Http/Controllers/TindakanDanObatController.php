@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MenuTindakDanObat;
+use App\Models\Pasien;
 use App\Models\User;
 use App\Models\MasterWilayah;
 use App\Models\MasterTindakan;
 use App\Models\MasterObat;
-use App\Models\Tagihan;
 
 class TindakanDanObatController extends Controller
 {
     public function index(){
-        $items = MenuTindakDanObat::all();
+        $items = Pasien::all();
         
         return view ('pages/tindakan_dan_obat/index',
     [
@@ -21,8 +20,8 @@ class TindakanDanObatController extends Controller
     ]);
     }
 
-    public function edit($tdo_id){
-        $item = MenuTindakDanObat::findOrFail($tdo_id);
+    public function edit($id){
+        $item = Pasien::findOrFail($id);
         $tindakan_item = MasterTindakan::all();
         $obat_item = MasterObat::all();
    
@@ -33,36 +32,28 @@ class TindakanDanObatController extends Controller
         ]);
     }
 
-    public function update(Request $request , $tdo_id){
+    public function update(Request $request , $id){
+        $item = Pasien::findOrFail($id);
         $data = $request->all();
-
-        $item = MenuTindakDanObat::findOrFail($tdo_id);
+        $item->status_tindakan = "sudah";
+       
         $item->update($data);
-
-        Tagihan::create(
-            [
-                'NIK'=>$request->NIK,
-                'nama_pasien'=>$request->nama_pasien,
-                'no_phone'=>$request->no_phone,
-                'tanggal_lahir'=>$request->tanggal_lahir,
-                'jenis_kelamin'=>$request->jenis_kelamin,
-                'keluhan'=>$request->keluhan,
-                'pegawai_id'=>$request->pegawai_id,
-                'wilayah_id'=>$request->wilayah_id,
-                'tindakan_id'=>$request->tindakan_id,
-                'obat_id'=>$request->obat_id,
-                'status_tindakan'=>$request->status_tindakan,
-                'total_tagihan'=>$request->total_tagihan,
-                'status_pembayaran'=>$request->status_pembayaran,
-            ]
-        );
         
-        return redirect()->route('menu_tindakan_dan_obat');
+        return redirect()->back();
     }
 
-    public function destroy($tdo_id)
+    public function pembayaran($id){
+        $item = Pasien::findOrFail($id);
+        $item->total_tagihan =  $item->masterobat_tabel->harga * $item->jumlah_obat + $item->mastertindakan_tabel->tarif ;
+        $item->update();
+
+        return redirect()->route('tagihan.show',$item->id);
+        
+    }
+
+    public function destroy($id)
     {
-        $item = MenuTindakDanObat::findOrFail($tdo_id);
+        $item = Pasien::findOrFail($id);
         $item->delete();
         sleep(1);
         return redirect()->route('menu_tindakan_dan_obat');

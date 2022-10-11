@@ -24,4 +24,8 @@ class MasterObat extends Model
 	{
 		return $this->hasMany(Tagihan::class, 'obat_id');
 	}
+
+    public function pasien_tabel(){
+        return $this->hasMany(Pasien::class, 'obat_id');
+    }
 }

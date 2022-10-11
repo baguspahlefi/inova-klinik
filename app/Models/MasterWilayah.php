@@ -34,4 +34,8 @@ class MasterWilayah extends Model
 	{
 		return $this->hasMany(Tagihan::class, 'wilayah_id');
 	}
+
+	public function pasien_tabel(){
+        return $this->hasMany(Pasien::class, 'tindakan_id');
+    }
 }

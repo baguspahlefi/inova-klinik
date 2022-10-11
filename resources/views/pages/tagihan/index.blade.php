@@ -24,19 +24,21 @@ Tagihan Pasien
                                                 <th>NIK</th>
                                                 <th>Pegawai</th>
                                                 <th>Wilayah</th>
+                                                <th>Status Pembayaran</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @forelse ($item as $item)
                                                 <tr>
-                                                    <td> {{$item->tagihan_id}} </td>
+                                                    <td> {{$item->id}} </td>
                                                     <td> {{$item->nama_pasien}} </td>
                                                     <td> {{$item->NIK}} </td>
                                                     <td> {{$item->user_tabel->name}} </td>
                                                     <td> {{$item->masterwilayah_tabel->nama_wilayah}} </td>
+                                                    <td> {{$item->status_pembayaran}} </td>
                                                     <td>
-                                                        <a href=" # " class="btn btn-info">
+                                                        <a href=" {{route('tagihan.show',$item->id)}} " class="btn btn-info">
                                                             <i class="fa fa-search-alt"></i>
                                                         </a>
                                                     </td>

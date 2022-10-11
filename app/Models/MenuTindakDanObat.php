@@ -12,6 +12,7 @@ class MenuTindakDanObat extends Model
     protected $primaryKey = 'tdo_id';
 
     protected $fillable = [
+        'pasien_id',
         'NIK',
         'nama_pasien',
         'no_phone',

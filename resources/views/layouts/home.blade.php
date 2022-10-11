@@ -17,6 +17,6 @@
         @yield('content')
        
         @stack('prepend-script')
-        @include('includes.script')
+        @include('includes.script-home')
         @stack('addon-script')
     </body>
