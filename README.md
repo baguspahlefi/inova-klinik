@@ -1,8 +1,8 @@
-Kemudian untuk penggunaan aplikasi, Email dan password untuk login ke aplikasi sebagai berikut :
-(Admin)
-email : baguspahlefi2000@gmail.com
-password : qwerty123
+Email dan password untuk login ke aplikasi sebagai berikut : <br>
+(Admin)<br>
+email : baguspahlefi2000@gmail.com<br>
+password : qwerty123<br><br>
 
-(Pegawai)
-email : ronaldo@gmail.com
-password : qwerty123
+(Pegawai)<br>
+email : ronaldo@gmail.com<br>
+password : qwerty123<br>
